@@ -34,7 +34,7 @@ var mid = [
       '̨','̴','̵','̶',
       '͏','͜','͝','͞',
       '͟','͠','͢',' ','̸',
-      '̷',' ͡',' ҉','_]',''];
+      '̷','͡',' ҉'];
 
 var all = [].concat(up,down,mid);
 var sys = require('sys');
@@ -96,5 +96,7 @@ zalgo.heComes = function(text, u, m, d, size){
     return result;
 };
 
+sys.puts('\n\n\n\n\n\n\n');
 sys.puts(zalgo.heComes('fuck fuck fuck we are dead.'));
+sys.puts('\n\n\n\n\n\n\n');
 

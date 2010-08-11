@@ -3,3 +3,4 @@
 #zalgo, he comes
 ## and burninates your website...
 ### ahhhhhhh!
+#### right now the library is in the basic proof of concept stage. i'll make this a valid CommonJS package, jQuery plugin, bookmarklet, browser demo, etc once zalgo releases me from his terrifying grip

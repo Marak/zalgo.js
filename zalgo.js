@@ -39,3 +39,14 @@ var mid = [
 var sys = require('sys');
 sys.puts(u, d, mid);
 
+
+
+var zalgo = {};
+zalgo.heComes = function(){
+  
+};
+
+zalgo.heComes = function(text, options){
+  
+};
+

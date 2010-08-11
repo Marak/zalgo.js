@@ -48,5 +48,13 @@ zalgo.heComes = function(){
 
 zalgo.heComes = function(text, options){
   
+  text = text.split('');
+  for(var l in text){
+    sys.puts(text[l]);
+  }
+  
+  return text;
 };
+
+sys.puts(zalgo.heComes('fuck fuck fuck we are dead.'));
 

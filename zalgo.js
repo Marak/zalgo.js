@@ -55,10 +55,10 @@ function is_char(character) {
   return bool;
 }
 
-zalgo.heComes = function(text, u, m, d){
+zalgo.heComes = function(text, u, m, d, size){
     result = '';
     
-    var options = {"up" : u, "down" : d, "mid" : m, "size" : "maxi"};    
+    var options = {"up" : u || true, "down" :  d || true, "mid" : m || true, "size" : size || "maxi"};    
     
     text = text.split('');
      for(var l in text){
@@ -86,7 +86,7 @@ zalgo.heComes = function(text, u, m, d){
         var index = arr[d]
         for (var i = 0 ; i <= counts[index]; i++)
         {
-          if(true) {
+          if(options[index]) {
               p = eval(index)
               result = result + p[randomNumber(p.length)]
             }

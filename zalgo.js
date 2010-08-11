@@ -58,7 +58,7 @@ function is_char(character) {
 zalgo.heComes = function(text, u, m, d, size){
     result = '';
     
-    var options = {"up" : u || true, "down" :  d || true, "mid" : m || true, "size" : size || "maxi"};    
+    var options = {"up" : u || true, "down" :  d || true, "mid" : m || false, "size" : size || "maxi"};    
     
     text = text.split('');
      for(var l in text){
@@ -106,6 +106,6 @@ zalgo.heComes = function(text, u, m, d, size){
 var colors = require('colors');
 
 sys.puts('\n\n\n\n\n\n\n');
-sys.puts(zalgo.heComes('zalgo.js'));
+sys.puts(zalgo.heComes('it started out with one commit and then things started to get out of hand...'));
 sys.puts('\n\n\n\n\n\n\n');
 

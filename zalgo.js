@@ -36,7 +36,7 @@ var mid = [
       '͟','͠','͢',' ','̸',
       '̷',' ͡',' ҉','_]',''];
 
-var all = up + down + mid;
+var all = [].concat(up,down,mid);
 var sys = require('sys');
 
 
@@ -47,6 +47,14 @@ function randomNumber(range) {
   return r;
 };
 
+function is_char(character) {
+  var bool = false;
+  all.filter(function(i){
+   bool = (i == character);
+  })
+  return bool;
+}
+
 zalgo.heComes = function(text, u, m, d){
     result = '';
     
@@ -54,7 +62,8 @@ zalgo.heComes = function(text, u, m, d){
     
     text = text.split('');
      for(var l in text){
-       result << text[l];
+       if(is_char(l)) {continue;} 
+       result = result + text[l];
        var counts = {"up" : 0, "down" : 0, "mid" : 0};    
 
        

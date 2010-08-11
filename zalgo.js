@@ -32,8 +32,8 @@ var mid = [
       '̕','̛','̀','́',
       '͘','̡','̢','̧',
       '̨','̴','̵','̶',
-      '͏','͜','͝','͞',
-      '͟','͠','͢',' ','̸',
+      '͜','͝','͞',
+      '͟','͠','͢','̸',
       '̷','͡',' ҉'];
 
 var all = [].concat(up,down,mid);
@@ -62,24 +62,31 @@ zalgo.heComes = function(text, u, m, d, size){
     
     text = text.split('');
      for(var l in text){
-       if(is_char(l)) {continue;} 
+       if(is_char(l)) {
+         continue;
+       } 
        result = result + text[l];
-       var counts = {"up" : 0, "down" : 0, "mid" : 0};    
 
        
+       
+       var counts = {"up" : 0, "down" : 0, "mid" : 0};    
+
       switch(options.size) {
         case 'mini':
           counts.up = randomNumber(8);
           counts.min= randomNumber(2);
           counts.down = randomNumber(8);
+        break;
         case 'maxi':
           counts.up = randomNumber(16) + 3;
           counts.min = randomNumber(4) + 1;
           counts.down = randomNumber(64) + 3;
+        break;
         default:
           counts.up = randomNumber(8) + 1;
           counts.mid = randomNumber(6) / 2;
           counts.down= randomNumber(8) + 1;
+        break;
       }
       var arr = ["up", "mid", "down"];
       for(var d in arr){
@@ -96,7 +103,9 @@ zalgo.heComes = function(text, u, m, d, size){
     return result;
 };
 
+var colors = require('colors');
+
 sys.puts('\n\n\n\n\n\n\n');
-sys.puts(zalgo.heComes('fuck fuck fuck we are dead.'));
+sys.puts(zalgo.heComes('zalgo.js'));
 sys.puts('\n\n\n\n\n\n\n');
 

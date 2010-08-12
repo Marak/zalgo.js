@@ -1,6 +1,6 @@
 var sys = require('sys');
 
-soul = { 
+var soul = { 
   "up" : [
     '̍','̎','̄','̅',
     '̿','̑','̆','̐',

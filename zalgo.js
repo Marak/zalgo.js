@@ -1,4 +1,6 @@
-var sys = require('sys');
+//Original by Marak Squires, five years ago... :-)
+//2015-03-24 jorge@jorgechamorro.com
+//node zalgo.js 'The text' up down mid
 
 var soul = { 
   "up" : [
@@ -40,70 +42,34 @@ var soul = {
 
 var all = [].concat(soul.up, soul.down, soul.mid);
 
-var zalgo = {};
-
-function randomNumber(range) {
-  r = Math.floor(Math.random()*range);
-  return r;
+Array.prototype.times= function (f) {
+  while (this[0]) f(this[0]), --this[0];
 };
 
-function is_char(character) {
+function rnd (n) { return Math.floor(Math.random()*n) }
+
+function is_char (character) {
   var bool = false;
-  all.filter(function(i){
-   bool = (i == character);
-  });
+  all.filter(function (i) { bool= (i === character) });
   return bool;
 }
 
-zalgo.heComes = function(text, options){
-    result = '';
-    
-    options = options || {};
-    options["up"] = options["up"] || true;
-    options["mid"] = options["mid"] || true;
-    options["down"] = options["down"] || true;
-    options["size"] = options["size"] || "maxi";
-    var counts;
-    text = text.split('');
-     for(var l in text){
-       if(is_char(l)) { continue; } 
-       result = result + text[l];
-       
-      counts = {"up" : 0, "down" : 0, "mid" : 0}; 
-         
-      switch(options.size) {
-        case 'mini':
-          counts.up = randomNumber(8);
-          counts.min= randomNumber(2);
-          counts.down = randomNumber(8);
-        break;
-        case 'maxi':
-          counts.up = randomNumber(16) + 3;
-          counts.min = randomNumber(4) + 1;
-          counts.down = randomNumber(64) + 3;
-        break;
-        default:
-          counts.up = randomNumber(8) + 1;
-          counts.mid = randomNumber(6) / 2;
-          counts.down= randomNumber(8) + 1;
-        break;
-      }
-      
-      var arr = ["up", "mid", "down"];
-      for(var d in arr){
-        var index = arr[d];
-        for (var i = 0 ; i <= counts[index]; i++)
-        {
-          if(options[index]) {
-              result = result + soul[index][randomNumber(soul[index].length)];
-            }
-          }
-        }
-      }
-    return result;
-};
+function zalgo (text, up, down, mid) {
+	var result= '';
+	text.split('').forEach(function (v,i,o) {
+		if (!is_char(i)) {
+			result+= v;
+			var counts= {up:rnd(up), down:rnd(down), mid:rnd(mid)};
+			Object.getOwnPropertyNames(counts).forEach(function (v,i,o) {
+				[counts[v]].times(function () {
+				  result+= soul[v][rnd(soul[v].length)];
+				});
+			});
+		}
+	});
+  return result;
+}
 
-sys.puts('\n\n\n\n\n\n\n');
-sys.puts(zalgo.heComes('its a chain'));
-sys.puts('\n\n\n\n\n\n\n');
-
+var args= process.argv;
+var pad= '\n\n\n\n\n\n\n\n\n\n\n\n\n';
+process.stdout.write(pad+zalgo(args[2], args[3], args[4], args[5])+pad);
